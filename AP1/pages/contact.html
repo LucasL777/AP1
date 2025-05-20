@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <script src="https://kit.fontawesome.com/b0d8e23d7e.js" crossorigin="anonymous" defer></script>
+    <title>AP1 - Contact</title>
+  </head>
+  <body>
+    <header>
+      <div class="content header-content">
+        <div class="navlogo-container">
+          <a href="../index.php" class="navlogo">
+            <img src="../assets/img/logo.png" alt="logo" />
+            <span>JournaStage</span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="content">
+        <div class="main-content">
+          <h1>Formulaire de contact</h1>
+          <p class="description">Veuillez remplir le formulaire ci-dessous pour nous contacter. Nous vous répondrons dans les plus brefs délais.</p>
+          <form action="contact2.php" method="post" class="newJournal">
+            <div class="field-container">
+              <label class="without-icon" for="name">Nom</label>
+              <input
+                name="name"
+                class="field large"
+                id="name"
+                type="text"
+                placeholder="Saisissez ici votre nom"
+                required
+              />
+            </div>
+            <div class="field-container">
+              <label class="without-icon" for="firstname">Prénom</label>
+              <input
+                name="firstname"
+                class="field large"
+                id="firstname"
+                type="text"
+                placeholder="Saisissez ici votre nom"
+                required
+              />
+            </div>
+            <div class="field-container">
+              <label class="without-icon" for="email">Adresse e-mail</label>
+              <input
+                name="email"
+                class="field large"
+                id="email"
+                type="email"
+                placeholder="Saisissez ici votre adresse e-mail"
+                required
+              />
+            </div>
+            <div class="field-container">
+              <label class="without-icon" for="title">Objet</label>
+              <div class="textarea-container">
+                <input
+                  name="title"
+                  class="field xlarge no-return"
+                  id="title"
+                  type="text"
+                  maxlength="200"
+                  placeholder="Saisissez l'objet de votre message ici."
+                  required
+                />
+              </div>
+            </div>
+            <div class="field-container">
+              <label class="without-icon" for="journal-content">Contenu</label>
+              <div class="textarea-container">
+                <textarea
+                  name="journal-content"
+                  class="field xxlarge"
+                  id="journal-content"
+                  type="text"
+                  placeholder="Saisissez ici votre texte (2000 caractères maximum)"
+                  style ="resize:none;"
+                  maxlength="2000"
+                  rows="10"
+                  cols="50"
+                  required
+                ></textarea>
+              </div>
+            </div>
+            <button class="medium" type="submit">Envoyer le message</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="content footer-content">
+        <p><a href="contact.html">Besoin d'aide ?</a></p>
+        <p>JournaStage © 2025. Tous droits réservés.</p>
+      </div>
+    </footer>
+  </body>
+</html>
