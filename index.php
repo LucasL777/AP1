@@ -3,7 +3,7 @@
 <?php
 include "config/_config.php";
 session_start();
-test = 0;
+$test = 0;
 if (isset($_POST["btn_connexion"])) 
 {
 	$login = $_POST['login']; 
