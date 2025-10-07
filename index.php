@@ -1,5 +1,3 @@
-
-
 <?php
 include "config/_config.php";
 session_start();
