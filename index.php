@@ -1,3 +1,5 @@
+// Connexion à la base de données et gestion de la session
+
 <?php
 include "config/_config.php";
 session_start();
