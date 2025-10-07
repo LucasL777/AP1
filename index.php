@@ -1,8 +1,9 @@
-// Connexion à la base de données et gestion de la session
+
 
 <?php
 include "config/_config.php";
 session_start();
+test = 0;
 if (isset($_POST["btn_connexion"])) 
 {
 	$login = $_POST['login']; 
