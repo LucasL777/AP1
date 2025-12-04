@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <?php
 include "../../config/_config.php";
-
-if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-    $requete = "SELECT id_utilisateur, nom, prenom, email, date_naissance, type FROM journastage_utilisateur;";
-    if ($resultat = mysqli_query($connexion, $requete)) {
-        $resultat = mysqli_query($connexion, $requete);
-		    $nbligne= mysqli_num_rows ($resultat);
         
 ?>
   <html lang="fr">
@@ -30,53 +24,15 @@ if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
             <p>Espace administrateur</p>
           </div>
           <nav>
-            <a href="../../index.php" class="navlink1">Déconnexion</a>
+            <a href="stat.php" class="navlink3">Statistiques |</a>
+            <a href="../../index.php" class="navlink11"> Déconnexion</a>
           </nav>
         </div>
       </header>
       <main>
         <div class="content">
           <div class="main-content">
-            <h1>Bonjour, bienvenue sur le menu administrateur !</h1>
-            <h2>Que souhaitez-vous faire ?</h2>
-            <br>
-            <a href="accountCreate.php" class="selection-item">
-            <button class="medium">
-                <i class="medium fa-solid fa-add"></i>
-                <p>Créer un nouveau compte</p>
-            </button>
-            </a>
-            <a href="accountDelete.php" class="selection-item">
-            <button class="medium">
-                <i class="medium fa-solid fa-minus"></i>
-                <p>Supprimer un compte existant</p>
-            </button>
-            </a>
-            <br>
-            <br>
-          <table class = "table-style">
-          <?php
-          if ($resultat && $nbligne > 0) {
-            echo  "<thead><tr>";
-            while ($fieldinfo = $resultat->fetch_field()) {
-                echo "<th>".$fieldinfo->name. "</th>" ;
-            }
-            echo "</tr></thead>";
-          } 
-          echo "<tbody>"; 
-          while ($nbligne = $resultat->fetch_assoc()) {
-            echo "<tr>";
-            foreach ($nbligne as $cell) {
-              echo "<td>" . htmlspecialchars($cell) . "</td>";
-            }
-            echo "</tr>";
-          }
-          echo "</tbody>";
-        }
-        mysqli_close($connexion);
-        }
-          ?>
-          </table>
+            <h1>Bienvenue sur le menu administrateur !</h1>
           </div>
         </div>
       </main>

@@ -62,12 +62,26 @@ header {
 
 }
 
-.navlink2 {
+.navlink11 {
     color: #ff9a8d;
     font-weight: bold;
     transition: color 0.3s;
     position: absolute;
     right: 25px;
+
+}
+
+.navlink2 {
+    color: #ff9a8d;
+    font-weight: bold;
+    transition: color 0.3s;
+    right: 25px;
+}
+
+.navlink3 {
+    color: black;
+    transition: color 0.3s;
+    text-decoration: none;
 }
 
 .navlink-centre {
