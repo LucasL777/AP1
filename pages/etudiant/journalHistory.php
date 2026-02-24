@@ -13,7 +13,7 @@
   session_start();
   $id_etudiant = $_SESSION['id'];
   if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-    $requete = "SELECT id_compte_rendu, titre, date FROM journastage_compte_rendu WHERE id_etudiant = '$id_etudiant' ORDER BY date DESC;";
+    $requete = "SELECT id_compte_rendu, titre, date, note FROM journastage_compte_rendu WHERE id_etudiant = '$id_etudiant' ORDER BY date DESC;";
     if ($resultat = mysqli_query($connexion, $requete )) {
       $resultat = mysqli_query($connexion, $requete);
 		  $nbligne= mysqli_num_rows ($resultat);
@@ -63,7 +63,7 @@
             $liste[] = htmlspecialchars($valeur);
           }
           // créer les objets compte_rendu et les stocker dans un dictionnaire avec l'id comme clé
-        $compte_rendu = new Compte_rendu($liste[0], $liste[1], $liste[2], $id_etudiant, null, null);
+        $compte_rendu = new Compte_rendu($liste[0], $liste[1], $liste[2], $liste[3], $id_etudiant, null, null);
         $dico[$compte_rendu->getId()] = $compte_rendu;
         }
       }
@@ -73,6 +73,7 @@
           <tr>
             <th>Date</th>
             <th>Titre</th>
+            <th>Note</th>
             <th>Consulter</th>
           </tr>
         </thead>
@@ -83,6 +84,7 @@
             <tr>
               <td><?php echo $compte_rendu->getDate(); ?></td>
               <td><?php echo $compte_rendu->getTitre(); ?></td>
+              <td><?php echo $compte_rendu->getNote(); ?></td>
               <td><a href="consultJournal.php?id_compte_rendu=<?= $cle?>"><button class="medium fa-solid fa-eye"></button></a></td>
             </tr>
             <?php

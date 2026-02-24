@@ -30,11 +30,11 @@ include "../../config/_config.php";
 $titre = $_POST['newtitle'];
 $date = $_POST['newdate'];
 $content = $_POST['newjournal-content'];
+$note = $_POST['note'];
 $id = $_POST['id_compte_rendu'];
 
   if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-    $requete = "Update journastage_compte_rendu set titre = '$titre', date = '$date', contenu = '$content' where id_compte_rendu = '$id';";
-
+    $requete = "Update journastage_compte_rendu set titre = '$titre', date = '$date', contenu = '$content', note = '$note' where id_compte_rendu = '$id';";
     if ($resultat = mysqli_query($connexion,$requete)){
       ?>
       <main>

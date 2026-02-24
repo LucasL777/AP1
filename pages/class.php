@@ -5,14 +5,16 @@ class Compte_rendu{
 	private $id;
 	private $titre;
 	private $date;
+    private $note;
 	private $id_etudiant;
     private $nom_etudiant;
     private $prenom;
 	
-	public function __construct($unid, $untitre, $undate, $unid_etudiant, $unnom_etudiant, $unprenom){
+	public function __construct($unid, $untitre, $undate, $unnote, $unid_etudiant, $unnom_etudiant, $unprenom){
         $this->id = $unid;
         $this->titre = $untitre;
         $this->date = $undate;
+        $this->note = $unnote;
         $this->id_etudiant = $unid_etudiant;
         $this->nom_etudiant = $unnom_etudiant;
         $this->prenom = $unprenom;
@@ -29,6 +31,10 @@ class Compte_rendu{
 	public function getDate(){
 		return $this->date;
 	}
+
+    public function getNote(){
+        return $this->note;
+    }
 
 	public function getId_etudiant(){
 		return $this->id_etudiant;

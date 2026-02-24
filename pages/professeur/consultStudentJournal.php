@@ -14,7 +14,7 @@
           $id_prof = $_SESSION['id'];
           $day = 365;
             if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-              $requete = "SELECT id_compte_rendu, titre, date, id_etudiant, journastage_utilisateur.nom, prenom FROM journastage_compte_rendu, journastage_utilisateur, journastage_classe, journastage_enseigner WHERE journastage_compte_rendu.id_etudiant = journastage_utilisateur.id_utilisateur and journastage_utilisateur.id_classe = journastage_enseigner.id_classe and id_professeur = '$id_prof' and date >= NOW() - INTERVAL '$day' DAY ;";
+              $requete = "SELECT id_compte_rendu, titre, date, note, id_etudiant, journastage_utilisateur.nom, prenom FROM journastage_compte_rendu, journastage_utilisateur, journastage_classe, journastage_enseigner WHERE journastage_compte_rendu.id_etudiant = journastage_utilisateur.id_utilisateur and journastage_utilisateur.id_classe = journastage_enseigner.id_classe and id_professeur = '$id_prof' and date >= NOW() - INTERVAL '$day' DAY ;";
               if ($resultat = mysqli_query($connexion, $requete )) {
                 $resultat = mysqli_query($connexion, $requete);
 		            $nbligne= mysqli_num_rows ($resultat);
@@ -65,7 +65,7 @@
             $liste[] = htmlspecialchars($valeur);
           }
           // créer un objet compte_rendu
-        $compte_rendu = new Compte_rendu($liste[0], $liste[1], $liste[2], $liste[3], $liste[4], $liste[5]);
+        $compte_rendu = new Compte_rendu($liste[0], $liste[1], $liste[2], $liste[3], $liste[4], $liste[5], $liste[6]);
         $dico[$compte_rendu->getId()] = $compte_rendu;
         }
       }
@@ -82,14 +82,34 @@
         <tbody>
           <?php
           foreach ($dico as $cle => $compte_rendu) { //pour afficher chaque objet compte_rendu
-            ?>
-            <tr>
-              <td><?php echo $compte_rendu->getDate(); ?></td>
-              <td><?php echo $compte_rendu->getTitre(); ?></td>
-              <td><?php echo $compte_rendu->getNom_etudiant() . " " . $compte_rendu->getPrenom(); ?></td>
-              <td><a target="_blank" href="consultJournal.php?id_compte_rendu=<?= $cle?>"><button class="medium fa-solid fa-eye"></button></a></td>
-            </tr>
-            <?php
+            if($compte_rendu->getNote() == 5){
+              ?>
+              <tr style="background-color: #4bb543;">
+                <td><?php echo $compte_rendu->getDate(); ?></td>
+                <td><?php echo $compte_rendu->getTitre(); ?></td>
+                <td><?php echo $compte_rendu->getNom_etudiant() . " " . $compte_rendu->getPrenom(); ?></td>
+                <td><a target="_blank" href="consultJournal.php?id_compte_rendu=<?= $cle?>"><button color="black" class="medium fa-solid fa-eye"></button></a></td>
+              </tr>
+              <?php
+            }else if($compte_rendu->getNote() == 0){
+              ?>
+              <tr style="background-color: #e83342;">
+                <td><?php echo $compte_rendu->getDate(); ?></td>
+                <td><?php echo $compte_rendu->getTitre(); ?></td>
+                <td><?php echo $compte_rendu->getNom_etudiant() . " " . $compte_rendu->getPrenom(); ?></td>
+                <td><a target="_blank" href="consultJournal.php?id_compte_rendu=<?= $cle?>"><button class="medium fa-solid fa-eye"></button></a></td>
+              </tr>
+              <?php
+            }else{
+              ?>
+              <tr style="background-color: #ffffff;">
+                <td><?php echo $compte_rendu->getDate(); ?></td>
+                <td><?php echo $compte_rendu->getTitre(); ?></td>
+                <td><?php echo $compte_rendu->getNom_etudiant() . " " . $compte_rendu->getPrenom(); ?></td>
+                <td><a target="_blank" href="consultJournal.php?id_compte_rendu=<?= $cle?>"><button class="medium fa-solid fa-eye"></button></a></td>
+              </tr>
+              <?php
+            }
           }
           ?>
         </tbody>

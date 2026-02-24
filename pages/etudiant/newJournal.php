@@ -33,9 +33,10 @@ if (isset($_POST["btn_compte_rendu"])){
   $titre = $_POST['title'];
   $date = $_POST['date'];
   $content = $_POST['journal-content'];
+  $note = $_POST['note'];
 
   if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-    $requete = "Insert into journastage_compte_rendu(titre, contenu, date, id_etudiant, date_time) VALUES('$titre', '$content', '$date', '$id_etudiant', NOW());";
+    $requete = "Insert into journastage_compte_rendu(titre, contenu, date, id_etudiant, date_time, note) VALUES('$titre', '$content', '$date', '$id_etudiant', NOW(), '$note');";
 
     if ($resultat = mysqli_query($connexion,$requete)){
       ?>
@@ -110,6 +111,31 @@ if (isset($_POST["btn_compte_rendu"])){
                 ></textarea>
               </div>
             </div>
+            <br>
+            <label>Note :</label>
+            <div class="field-container-notes">
+              <label>
+                <input type="radio" id="note1" name="note" value="1" required>
+                1
+              </label>
+              <label>
+                <input type="radio" id="note2" name="note" value="2" required>
+                2
+              </label>
+              <label>
+                <input type="radio" id="note3" name="note" value="3" required>
+                3
+              </label>
+              <label>
+                <input type="radio" id="note4" name="note" value="4" required>
+                4
+              </label>
+              <label>
+                <input type="radio" id="note5" name="note" value="5" required>
+                5
+              </label>
+            </div>
+            <br>
             <button class="medium" type="submit" style="color: #4a536b;" name="btn_compte_rendu" >Créer le compte rendu</button>
           </form>
         </div>

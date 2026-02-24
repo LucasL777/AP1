@@ -14,7 +14,7 @@
     $id_etudiant = $_SESSION['id'];
     $id = $_GET['id_compte_rendu'];
     if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-      $requete = "SELECT  titre, date, contenu FROM journastage_compte_rendu WHERE id_etudiant = '$id_etudiant' AND id_compte_rendu = '$id';";
+      $requete = "SELECT  titre, date, contenu, note FROM journastage_compte_rendu WHERE id_etudiant = '$id_etudiant' AND id_compte_rendu = '$id';";
       if ($resultat = mysqli_query($connexion, $requete )) {
         $resultat = mysqli_query($connexion, $requete);
         $nbligne= mysqli_num_rows ($resultat);
@@ -23,6 +23,7 @@
             $contenu = $donnees['contenu'];
             $titre = $donnees['titre'];
             $date = $donnees['date'];
+            $note = $donnees['note'];
           }
         }
         ?>
@@ -138,6 +139,125 @@
                       ></textarea>
                     </div>
                   </div>
+                  <label>Note :</label>
+
+            <div class="field-container-notes">
+              <?php if($note == 1){ ?>
+              <label>
+                <input type="radio" id="note1" name="note" value="1" checked>
+                1
+              </label>
+              <label>
+                <input type="radio" id="note2" name="note" value="2" required>
+                2
+              </label>
+              <label>
+                <input type="radio" id="note3" name="note" value="3" required>
+                3
+              </label>
+              <label>
+                <input type="radio" id="note4" name="note" value="4" required>
+                4
+              </label>
+              <label>
+                <input type="radio" id="note5" name="note" value="5" required>
+                5
+              </label>
+
+              <?php } else if($note == 2){ ?>
+
+              <label>
+                <input type="radio" id="note1" name="note" value="1" required>
+                1
+              </label>
+              <label>
+                <input type="radio" id="note2" name="note" value="2" checked>
+                2
+              </label>
+              <label>
+                <input type="radio" id="note3" name="note" value="3" required>
+                3
+              </label>
+              <label>
+                <input type="radio" id="note4" name="note" value="4" required>
+                4
+              </label>
+              <label>
+                <input type="radio" id="note5" name="note" value="5" required>
+                5
+              </label>
+
+              <?php } else if($note == 3){ ?>
+
+              <label>
+                <input type="radio" id="note1" name="note" value="1" required>
+                1
+              </label>
+              <label>
+                <input type="radio" id="note2" name="note" value="2" required>
+                2
+              </label>
+              <label>
+                <input type="radio" id="note3" name="note" value="3" checked>
+                3
+              </label>
+              <label>
+                <input type="radio" id="note4" name="note" value="4" required>
+                4
+              </label>
+              <label>
+                <input type="radio" id="note5" name="note" value="5" required>
+                5
+              </label>
+
+              <?php } else if($note == 4){ ?>
+
+              <label>
+                <input type="radio" id="note1" name="note" value="1" required>
+                1
+              </label>
+              <label>
+                <input type="radio" id="note2" name="note" value="2" required>
+                2
+              </label>
+              <label>
+                <input type="radio" id="note3" name="note" value="3" required>
+                3
+              </label>
+              <label>
+                <input type="radio" id="note4" name="note" value="4" checked>
+                4
+              </label>
+              <label>
+                <input type="radio" id="note5" name="note" value="5" required>
+                5
+              </label>
+
+              <?php } else if($note == 5){ ?>
+
+              <label>
+                <input type="radio" id="note1" name="note" value="1" required>
+                1
+              </label>
+              <label>
+                <input type="radio" id="note2" name="note" value="2" required>
+                2
+              </label>
+              <label>
+                <input type="radio" id="note3" name="note" value="3" required>
+                3
+              </label>
+              <label>
+                <input type="radio" id="note4" name="note" value="4" required>
+                4
+              </label>
+              <label>
+                <input type="radio" id="note5" name="note" value="5" checked>
+                5
+              </label>
+              <?php } ?>
+            </div>
+            <br>
                   <div>
                   <a href="modifyJournal.php" class="center">
                     <button class="medium fa-solid fa-pen-to-square" style="color: #4a536b;">
