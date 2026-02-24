@@ -14,7 +14,7 @@
   $id_prof = $_SESSION['id'];
   $id = $_GET['id'];
   if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-    $requete = "SELECT id_compte_rendu, titre, date, id_etudiant FROM journastage_compte_rendu, journastage_utilisateur WHERE journastage_compte_rendu.id_etudiant = '$id' ORDER BY date DESC;";
+    $requete = "SELECT id_compte_rendu, titre, date, note, id_etudiant FROM journastage_compte_rendu, journastage_utilisateur WHERE journastage_compte_rendu.id_etudiant = '$id' ORDER BY date DESC;";
     $requete2 = "SELECT nom, prenom FROM journastage_utilisateur WHERE id_utilisateur = '$id';";
     if ($resultat = mysqli_query($connexion, $requete2 )) {
       $resultat = mysqli_query($connexion, $requete2);
@@ -26,9 +26,9 @@
           }
         }
       }
-    if ($resultat = mysqli_query($connexion, $requete )) {
-      $resultat = mysqli_query($connexion, $requete);
-		  $nbligne= mysqli_num_rows ($resultat);
+    if ($resultat2 = mysqli_query($connexion, $requete )) {
+      $resultat2 = mysqli_query($connexion, $requete);
+		  $nbligne= mysqli_num_rows ($resultat2);
       $dico = array();
       
       ?>
@@ -75,13 +75,13 @@
               <?php
       while ($nbligne > 0) {
         $nbligne--;
-        while ($nbligne = $resultat->fetch_assoc()) {
+        while ($nbligne = $resultat2->fetch_assoc()) {
           $liste = array();
           foreach ($nbligne as $valeur) {
             $liste[] = htmlspecialchars($valeur);
           }
           // creation des objets CR
-          $compte_rendu = new Compte_rendu($liste[0], $liste[1], $liste[2], $liste[3], null, null);
+          $compte_rendu = new Compte_rendu($liste[0], $liste[1], $liste[2], $liste[3], $liste[4], null, null);
           $dico[$compte_rendu->getId()] = $compte_rendu;
         }
       }
