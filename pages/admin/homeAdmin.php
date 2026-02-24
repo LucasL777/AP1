@@ -24,7 +24,7 @@ include "../../config/_config.php";
             <p>Espace administrateur</p>
           </div>
           <nav>
-            <a href="stat.php" class="navlink3">Statistiques |</a>
+            <a href="stat.php" class="navlink1">Statistiques</a>
             <a href="../../index.php" class="navlink11"> Déconnexion</a>
           </nav>
         </div>
