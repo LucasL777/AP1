@@ -25,7 +25,7 @@ if (isset($_POST["btn_connexion"]))
           $_SESSION['id'] = $donnees['id_utilisateur'];
         }
         // Redirection en fonction du type d'utilisateur
-        // 1 = etudiant, 2 = professeur, 4 = secretaire, 5 = admin
+        // 1 = etudiant, 2 = professeur, 5 = admin
         if($_SESSION['type'] == 1){
           header("Location: pages/etudiant/home.php");
           exit();
