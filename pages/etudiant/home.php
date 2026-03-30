@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <?php
   session_start();
+  $id = $_SESSION['id'];
   $nom =  $_SESSION['nom'];
   $prenom =  $_SESSION['prenom'];
   $email =  $_SESSION['email'];
   $date = $_SESSION['date_naissance'];
+  $tel = $_SESSION['tel'];
+  $entreprise = $_SESSION['entreprise'];
+  $tuteur = $_SESSION['tuteur'];
+
+
   ?>
   <html lang="fr">
     <head>

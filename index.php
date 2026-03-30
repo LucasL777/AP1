@@ -23,6 +23,9 @@ if (isset($_POST["btn_connexion"]))
           $_SESSION['prenom'] = $donnees['prenom'];
           $_SESSION['date_naissance'] = $donnees['date-naissance'];
           $_SESSION['id'] = $donnees['id_utilisateur'];
+          $_SESSION['tel'] = $donnees['tel'];
+          $_SESSION['entreprise'] = $donnees['entreprise'];
+          $_SESSION['tuteur'] = $donnees['tuteur'];
         }
         // Redirection en fonction du type d'utilisateur
         // 1 = etudiant, 2 = professeur, 5 = admin

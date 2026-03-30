@@ -13,7 +13,17 @@
   session_start();
   $id_prof =  $_SESSION['id'];
   if($connexion = mysqli_connect($serveur, $user, $bdd_password, $BDD_name)){
-    $requete = "SELECT id_utilisateur, journastage_utilisateur.nom, prenom, libelle FROM journastage_utilisateur, journastage_classe, journastage_enseigner WHERE journastage_utilisateur.id_classe = journastage_enseigner.id_classe and journastage_enseigner.id_classe = journastage_classe.id_classe and id_professeur = '$id_prof';";
+    $requete = "SELECT id_utilisateur, journastage_utilisateur.nom, prenom, libelle, journastage_utilisateur.tel, journastage_utilisateur.tuteur, journastage_entreprise.name, journastage_entreprise.rue, journastage_entreprise.ville, journastage_entreprise.cp
+                FROM journastage_utilisateur
+                inner JOIN journastage_classe
+                  ON journastage_utilisateur.id_classe = journastage_classe.id_classe
+                inner JOIN journastage_enseigner
+                  ON journastage_enseigner.id_classe = journastage_classe.id_classe
+                  AND journastage_enseigner.id_professeur = '$id_prof'
+                LEFT JOIN journastage_entreprise
+                  ON journastage_utilisateur.entreprise = journastage_entreprise.id;";
+
+
     if ($resultat = mysqli_query($connexion, $requete )) {
       $resultat = mysqli_query($connexion, $requete);
 		  $nbligne= mysqli_num_rows ($resultat);
@@ -63,7 +73,8 @@
             $liste[] = htmlspecialchars($valeur);
           } 
           // recup depuis la bdd et creation de l'objet eleve dans un dico
-        $eleve = new Eleve($liste[0], $liste[1], $liste[2], $liste[3]);
+          
+        $eleve = new Eleve($liste[0], $liste[1], $liste[2], $liste[3], $liste[4], $liste[5], $liste[6], $liste[7], $liste[8], $liste[9]);
         $dico[$eleve->getId()] = $eleve;
         }
       } 
@@ -74,6 +85,9 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Classe</th>
+            <th>Tél</th>
+            <th>Entreprise</th>
+            <th>Tuteur</th>
             <th>Consulter</th>
           </tr>
         </thead>
@@ -85,6 +99,9 @@
               <td><?php echo $valeur->getNom(); ?></td>
               <td><?php echo $valeur->getPrenom(); ?></td>
               <td><?php echo $valeur->getClasse(); ?></td>
+              <td><?php echo $valeur->getTel(); ?></td>
+              <td><?php echo $valeur->getCompanyName()." ".$valeur->getCompanyRue()." ".$valeur->getCompanyVille()." ".$valeur->getCompanyCp(); ?></td>
+              <td><?php echo $valeur->getTuteur(); ?></td>
               <td><a href="studentJournalHistory.php?id=<?= $cle?>"><button class="medium fa-solid fa-eye"></button></a></td>
             </tr>
             <?php

@@ -55,12 +55,25 @@ class Eleve{
     private $nom;
     private $prenom;
     private $classe;
+    private $tel;
+    private $tuteur;
+    private $companyName;
+    private $companyRue;
+    private $companyVille;
+    private $companyCp;
+   
     
-    public function __construct($unid, $unnom, $unprenom, $unclasse){
+    public function __construct($unid, $unnom, $unprenom, $unclasse, $untel, $untuteur, $uncompanyName, $uncompanyRue, $uncompanyVille, $uncompanyCp){
         $this->id = $unid;
         $this->nom = $unnom;
         $this->prenom = $unprenom;
         $this->classe = $unclasse;
+        $this->tel = $untel;
+        $this->tuteur = $untuteur;
+        $this->companyName = $uncompanyName;
+        $this->companyRue = $uncompanyRue; 
+        $this->companyVille = $uncompanyVille;
+        $this->companyCp = $uncompanyCp;
     }
     
     public function getId(){
@@ -78,4 +91,29 @@ class Eleve{
     public function getClasse(){
         return $this->classe;
     }
+
+    public function getTel(){
+        return $this->tel;
+    }
+
+    public function getTuteur(){
+        return $this->tuteur;
+    }
+
+    public function getCompanyName(){
+        return $this->companyName;
+    }
+
+    public function getCompanyRue(){
+        return $this->companyRue;
+    }
+
+    public function getCompanyVille(){
+        return $this->companyVille;
+    }
+
+    public function getCompanyCp(){
+        return $this->companyCp;
+    }
 }
+
